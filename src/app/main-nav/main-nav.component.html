@@ -2,7 +2,7 @@
 <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark" [containerInside]="false">
 
   <!-- Navbar brand -->
-  <mdb-navbar-brand><a class="navbar-brand" href="#">Stack Overflow Light</a></mdb-navbar-brand>
+  <mdb-navbar-brand><a class="navbar-brand" [routerLink]="['/']">Stack Overflow Light</a></mdb-navbar-brand>
 
   <!-- Collapsible content -->
   <links>
@@ -10,14 +10,15 @@
     <!-- Links -->
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect><i class="fas fa-home"></i>Home</a>
+        <a [routerLink]="['/']" class="nav-link waves-light" mdbWavesEffect><i class="fas fa-home"></i>Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link waves-light" mdbWavesEffect><i class="fas fa-plus"></i>Ask Question</a>
+        <a [routerLink]="['post/add']" class="nav-link waves-light" mdbWavesEffect><i class="fas fa-plus"></i>Ask
+          Question</a>
       </li>
 
       <!-- Dropdown -->
-      <li class="nav-item dropdown" dropdown>
+      <!-- <li class="nav-item dropdown" dropdown>
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
             <i class="fas fa-user-alt"></i>Profile<span class="caret"></span>
         </a>
@@ -25,13 +26,16 @@
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
           <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
         </div>
+      </li> -->
+      <li class="nav-item">
+        <a [routerLink]="['authentication/login']" class="nav-link waves-light" mdbWavesEffect><i class="fas fa-sign-in-alt"></i>Login</a>
       </li>
 
     </ul>
     <!-- Links -->
   </links>
   <!-- Collapsible content -->
-
 </mdb-navbar>
 <!--/.Navbar-->
+
 <ng-content></ng-content>
