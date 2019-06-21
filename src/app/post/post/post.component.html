@@ -1,3 +1,17 @@
-<p>
-  post works!
-</p>
+<div class="post">
+  <a>
+    <div class="answers-votes">
+      <mdb-badge><span class="count" [ngClass]="(post.score>=0)?'count-pos':'count-neg'">{{post.score}}</span><br />votes</mdb-badge>
+      <mdb-badge><span class="count">{{post.answers.length}}</span><br />answers</mdb-badge>
+    </div>
+    <mdb-card class="card">
+      <mdb-card-body>
+        <mdb-card-title>
+          <h5>{{post.title}}</h5>
+        </mdb-card-title>
+      </mdb-card-body>
+      <mdb-card-footer><small class="text-muted">Posted on {{post.creationTime | date : 'medium'}} by <span
+            class="post-owner">{{post.owner.firstName}} {{post.owner.lastName}}</span></small></mdb-card-footer>
+    </mdb-card>
+  </a>
+</div>

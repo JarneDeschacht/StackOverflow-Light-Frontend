@@ -5,3 +5,27 @@
   padding-right: 10%;
   background-color: $maincolor;
 }
+.spinner-grow{
+  margin-top: 10%;
+  width: 4rem;
+  height: 4rem;
+  background-color: $maincolor;
+}
+.card-body{
+  padding-bottom: 2%;
+  padding-top: 2%;
+  h5{
+    margin-bottom: 0;
+    color: $black;
+    font-weight: bold;
+    font-size: 1.4rem;
+  }
+}
+.badge{
+  color: $black !important;
+  font-size: 1rem;
+  background-color: inherit !important;
+  box-shadow: none;
+  padding-top: 7%;
+  line-height: 1.7;
+}

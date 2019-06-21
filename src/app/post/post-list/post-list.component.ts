@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from '../post.model';
+import { Observable } from 'rxjs';
+import { PostDataService } from '../post-data.service';
 
 @Component({
   selector: 'app-post-list',
@@ -6,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./post-list.component.scss']
 })
 export class PostListComponent implements OnInit {
+  public posts: Post[];
+  private _fetchPosts$: Observable<Post[]> = this._postDataService.posts$;
+  public loadingError$ = this._postDataService.loadingError$;
 
-  constructor() { }
+  constructor(private _postDataService: PostDataService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  get posts$(): Observable<Post[]> {
+    return this._fetchPosts$;
   }
-
 }
