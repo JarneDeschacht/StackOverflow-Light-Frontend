@@ -1,3 +1,35 @@
-<p>
-  post-detail works!
-</p>
+<div class="detail">
+  <div class="voting">
+    <a class="arrow">
+      <mdb-icon fas icon="arrow-up fa-3x"></mdb-icon>
+    </a>
+    <span class="score">{{post.score}}</span>
+    <a class="arrow">
+      <mdb-icon fas icon="arrow-down fa-3x"></mdb-icon>
+    </a>
+  </div>
+  <mdb-card class="card">
+    <mdb-card-body>
+      <mdb-card-title>
+        <h5>{{post.title}}</h5>
+      </mdb-card-title>
+      <mdb-card-text>{{post.body}}</mdb-card-text>
+      <mdb-card-text><small class="text-muted">Posted on {{post.creationTime | date : 'medium'}} by <span
+            class="post-owner">{{post.owner.firstName}} {{post.owner.lastName}}</span></small></mdb-card-text>
+    </mdb-card-body>
+  </mdb-card>
+  <h2 *ngIf="post.answers.length >0" class="subtitle">Answers : {{post.answers.length}}</h2>
+  <div class="answers" *ngFor="let ans of post.answers">
+    <app-post-answer [answer]='ans'></app-post-answer>
+  </div>
+  <h2 class="subtitle">Your Answer</h2>
+  <form class="form">
+    <div class="md-form">
+      <textarea type="text" id="form8" class="md-textarea md-textarea-auto form-control" mdbInput></textarea>
+      <label for="form8">Type your answer</label>
+    </div>
+    <button mdbBtn type="button" class="button" mdbWavesEffect>
+      Post Your Answer
+    </button>
+  </form>
+</div>

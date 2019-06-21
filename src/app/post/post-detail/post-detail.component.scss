@@ -1,0 +1,51 @@
+@import '../../../assets/colors.scss';
+
+.detail {
+  padding-top: 6%;
+  width: 70%;
+  margin: 0 auto;
+
+  .voting {
+    width: 8%;
+    display: block;
+    float: left;
+    .arrow{
+        transition-duration: 0.2s;
+        width: 100%;
+        &:hover{
+           color: $maincolor;
+           transition-duration: 0.2s; 
+        }
+        text-align: center;
+        display: block;
+    }
+    .score{
+        display: block;
+        text-align: center;
+        margin: 5% 0;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+    padding-top: 1%;
+  }
+
+  .card {
+    .post-owner {
+      color: $maincolor;
+      font-weight: bold;
+    }
+  }
+  .subtitle{
+      font-weight: bold;
+      margin: 3% 0;
+  }
+  .form{
+    .button{
+      background-color: $maincolor;
+      color: white;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+    margin-bottom: 10%;
+  }
+}

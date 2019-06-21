@@ -1,8 +1,8 @@
 <div class="post">
-  <a>
+  <a routerLink="/post/detail/{{post.postId}}">
     <div class="answers-votes">
-      <mdb-badge><span class="count" [ngClass]="(post.score>=0)?'count-pos':'count-neg'">{{post.score}}</span><br />votes</mdb-badge>
-      <mdb-badge><span class="count">{{post.answers.length}}</span><br />answers</mdb-badge>
+      <mdb-badge><span class="count" [ngClass]="(post.score>=0)?'count-pos':'count-neg'">{{post.score}}</span><br />{{post.score === 1 ? 'vote' : 'votes'}}</mdb-badge>
+      <mdb-badge><span class="count">{{post.answers.length}}</span><br />{{post.answers.length === 1 ? 'answer' : 'answers'}}</mdb-badge>
     </div>
     <mdb-card class="card">
       <mdb-card-body>
