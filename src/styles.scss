@@ -15,6 +15,7 @@
 
 .card {
   box-shadow: none;
+
   .card-body {
     padding-bottom: 2%;
     padding-top: 2%;
@@ -31,7 +32,8 @@
 
     }
   }
-  .card-footer{
+
+  .card-footer {
     background-color: rgba($color: $grey, $alpha: 0.1);
   }
 }
@@ -44,8 +46,33 @@
   padding-top: 7%;
   line-height: 1.7;
 }
-.md-form textarea[type=text]:focus:not([readonly]) + label {
-  color: $maincolor; }
-  .md-form textarea[type=text]:focus:not([readonly]) {
+
+.md-form textarea[type=text]:focus:not([readonly])+label {
+  color: $maincolor;
+}
+
+.md-form textarea[type=text]:focus:not([readonly]) {
   box-shadow: 0 1px 0 0 $maincolor;
-  border-bottom: 1px solid $maincolor; }
+  border-bottom: 1px solid $maincolor;
+}
+
+.form-control:focus {
+  color: $black;
+  border-color: rgba($color: $maincolor, $alpha: 0.1);
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba($color: $maincolor, $alpha: 0.25);
+}
+
+.md-form input[type=text]:focus,
+.md-form input[type=email]:focus,
+.md-form input[type=password]:focus {
+  box-shadow: 0 1px 0 0 $maincolor !important;
+  border-bottom: 1px solid $maincolor !important;
+}
+
+.md-form input[type=text]:focus:not([readonly])+label,
+.md-form input[type=email]:focus:not([readonly])+label,
+.md-form input[type=password]:focus:not([readonly])+label {
+  color: $maincolor;
+}
+

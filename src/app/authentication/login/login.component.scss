@@ -1,0 +1,19 @@
+@import '../../../assets/colors.scss';
+
+.login {
+  padding-top: 7%;
+  width: 40%;
+  margin: 0 auto;
+
+  .btn {
+    background-color: $maincolor !important;
+  }
+
+  .link {
+    color: $maincolor;
+    font-weight: bold;
+  }
+  mdb-error, mdb-success{
+    margin-top: 1%;
+  }
+}
