@@ -1,7 +1,8 @@
 <div class="register">
-  <form [formGroup]="register" class="border border-light p-5">
+  <form [formGroup]="register" class="border border-light p-5" (ngSubmit)="onSubmit()">
 
     <p class="h4 mb-4 text-center">Sign up</p>
+    <p class="h7 mb-4 text-center error">{{errorMsg}}</p>
 
     <div class="form-row">
       <div class="col">

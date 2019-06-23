@@ -6,21 +6,18 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { httpInterceptorProviders } from './interceptors';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainNavComponent,
-    PageNotFoundComponent
-  ],
+  declarations: [AppComponent, MainNavComponent, PageNotFoundComponent],
   imports: [
     BrowserModule,
     MDBBootstrapModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule
   ],
-  providers: [],
-  schemas: [ NO_ERRORS_SCHEMA ],
+  providers: [httpInterceptorProviders],
+  schemas: [NO_ERRORS_SCHEMA],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

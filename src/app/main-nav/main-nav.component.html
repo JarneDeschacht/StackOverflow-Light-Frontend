@@ -18,17 +18,17 @@
       </li>
 
       <!-- Dropdown -->
-      <!-- <li class="nav-item dropdown" dropdown>
+      <li class="nav-item dropdown" dropdown *ngIf="(loggedInUser$ | async) as user">
         <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-            <i class="fas fa-user-alt"></i>Profile<span class="caret"></span>
+          <i class="fas fa-user-alt"></i>{{user}}<span class="caret"></span>
         </a>
         <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">My account</a>
-          <a class="dropdown-item waves-light" mdbWavesEffect href="#">Log out</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect (click)="logout()">Log out</a>
         </div>
-      </li> -->
-      <li class="nav-item">
-        <a [routerLink]="['authentication/login']" class="nav-link waves-light" mdbWavesEffect><i class="fas fa-sign-in-alt"></i>Login</a>
+      </li>
+      <li class="nav-item" *ngIf="!(loggedInUser$ | async) as user">
+        <a [routerLink]="['authentication/login']" class="nav-link waves-light" mdbWavesEffect><i
+            class="fas fa-sign-in-alt"></i>Login</a>
       </li>
 
     </ul>

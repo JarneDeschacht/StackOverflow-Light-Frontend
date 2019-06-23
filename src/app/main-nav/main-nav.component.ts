@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-nav.component.scss']
 })
 export class MainNavComponent implements OnInit {
+  loggedInUser$ = this._authenticationService.user$;
 
-  constructor() { }
+  constructor(private _authenticationService: AuthenticationService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+  logout() {
+    this._authenticationService.logout();
   }
-
 }

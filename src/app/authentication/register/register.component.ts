@@ -10,6 +10,8 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 function comparePasswords(control: AbstractControl): { [key: string]: any } {
   const password = control.get('password');
@@ -46,10 +48,12 @@ export const isValidPassword = (c: FormControl) => {
 })
 export class RegisterComponent implements OnInit {
   public register: FormGroup;
+  public errorMsg: string;
 
   constructor(
     private fb: FormBuilder,
-    private _dataservice: AuthenticationService
+    private router: Router,
+    private authService: AuthenticationService
   ) {}
 
   ngOnInit() {
@@ -58,8 +62,7 @@ export class RegisterComponent implements OnInit {
       lastname: ['', [Validators.required, Validators.maxLength(80)]],
       email: [
         '',
-        [Validators.required, Validators.email],
-        serverSideValidateEmail(this._dataservice.checkEmailAvailability)
+        [Validators.required, Validators.email]
       ],
       passwordGroup: this.fb.group(
         {
@@ -111,5 +114,31 @@ export class RegisterComponent implements OnInit {
     } else if (errors.InvalidPassword) {
       return 'Password must contain at least 1 number, 1 captial letter and 1 small letter';
     }
+  }
+  onSubmit() {
+    this.authService
+      .register(
+        this.register.value.firstname,
+        this.register.value.lastname,
+        this.register.value.email,
+        this.register.value.passwordGroup.password
+      )
+      .subscribe(
+        val => {
+          if (val) {
+            if (this.authService.redirectUrl) {
+              this.router.navigateByUrl(this.authService.redirectUrl);
+              this.authService.redirectUrl = undefined;
+            } else {
+              this.router.navigate(['/post/list']);
+            }
+          } else {
+            this.errorMsg = `Something went wrong`;
+          }
+        },
+        (err: HttpErrorResponse) => {
+          this.errorMsg = 'Something went wrong';
+        }
+      );
   }
 }
