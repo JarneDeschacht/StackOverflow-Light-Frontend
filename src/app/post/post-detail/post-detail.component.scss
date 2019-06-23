@@ -9,23 +9,35 @@
     width: 8%;
     display: block;
     float: left;
-    .arrow{
+
+    .vote {
+      transition-duration: 0.2s;
+      cursor: pointer;
+
+      &:hover {
         transition-duration: 0.2s;
-        width: 100%;
-        &:hover{
-           color: $maincolor;
-           transition-duration: 0.2s; 
-        }
-        text-align: center;
-        display: block;
+        color: $maincolor;
+      }
+      text-align: center;
+      display: block;
     }
-    .score{
-        display: block;
-        text-align: center;
-        margin: 5% 0;
-        font-size: 2.5rem;
-        font-weight: bold;
+
+    .active.up {
+      color: $upvote;
     }
+
+    .active.down {
+      color: $downvote;
+    }
+
+    .score {
+      display: block;
+      text-align: center;
+      margin: 5% 0;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+
     padding-top: 1%;
   }
 
@@ -34,18 +46,32 @@
       color: $maincolor;
       font-weight: bold;
     }
+    .text{
+      color: #747373;
+    font-size: 0.9rem;
+    font-weight: 400;
+    }
   }
-  .subtitle{
-      font-weight: bold;
-      margin: 3% 0;
+
+  .subtitle {
+    font-weight: bold;
+    margin: 3% 0;
   }
-  .form{
-    .button{
+
+  .form {
+    textarea{
+      white-space: pre-wrap;
+    }
+    .button {
       background-color: $maincolor;
       color: white;
       border-radius: 10px;
       font-weight: bold;
     }
+
     margin-bottom: 10%;
+    .md-form textarea ~ label.active{
+      color: $maincolor;
+    }
   }
 }

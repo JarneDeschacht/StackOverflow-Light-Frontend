@@ -9,12 +9,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { PostResolver } from './post-resolver';
 import { PostAnswerComponent } from './post-answer/post-answer.component';
+import { AuthGuardService } from '../authentication/auth-guard.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes = [
-  { path: 'list', component: PostListComponent },
-  { path: 'add', component: AddPostComponent },
+  {
+    path: 'list',
+    component: PostListComponent
+  },
+  { path: 'add', canActivate: [AuthGuardService], component: AddPostComponent },
   {
     path: 'detail/:id',
+    canActivate: [AuthGuardService],
     component: PostDetailComponent,
     resolve: { post: PostResolver }
   }
@@ -31,6 +37,8 @@ const routes = [
   imports: [
     CommonModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
     MDBBootstrapModule.forRoot()
   ]

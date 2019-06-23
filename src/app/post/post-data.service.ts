@@ -4,6 +4,8 @@ import { Observable, Subject, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { Post } from './post.model';
 import { environment } from 'src/environments/environment';
+import { Vote } from './vote.model';
+import { Answer } from './answer.model';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +31,20 @@ export class PostDataService {
     return this.http
       .get(`${environment.apiUrl}/post/${id}`)
       .pipe(map((post: any): Post => Post.fromJSON(post)));
+  }
+  addVote(userid: number, postId: number, voteType: number): Observable<Vote> {
+    return this.http
+      .post(`${environment.apiUrl}/post/${postId}/votes`, { userid, voteType })
+      .pipe(map((vote: any): Vote => Vote.fromJSON(vote)));
+  }
+  deleteVote(userid: number, postId: number): Observable<Post> {
+    return this.http
+      .post(`${environment.apiUrl}/post/${postId}/deletevotes/${userid}`, {})
+      .pipe(map((post: any): Post => Post.fromJSON(post)));
+  }
+  addAnswer(userid: number, postId: number, body: string){
+    return this.http
+      .post(`${environment.apiUrl}/post/${postId}/answers`, { body, userid })
+      .pipe(map((answer: any): Answer => Answer.fromJSON(answer)));
   }
 }

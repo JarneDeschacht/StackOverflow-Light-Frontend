@@ -1,12 +1,9 @@
 <div class="detail">
   <div class="voting">
-    <a class="arrow">
-      <mdb-icon fas icon="arrow-up fa-3x"></mdb-icon>
-    </a>
-    <span class="score">{{post.score}}</span>
-    <a class="arrow">
-      <mdb-icon fas icon="arrow-down fa-3x"></mdb-icon>
-    </a>
+    <mdb-icon class="vote up" [ngClass]="{'active' : uservote > 0 }" (click)="upvote()" fas icon="arrow-up fa-3x"></mdb-icon>
+    <span class="score ">{{post.score}}</span>
+    <mdb-icon class="vote down" [ngClass]="{'active' : !(uservote >= 0) }" (click)="downvote()" fas icon="arrow-down fa-3x">
+      </mdb-icon>
   </div>
   <mdb-card class="card">
     <mdb-card-body>
@@ -23,12 +20,12 @@
     <app-post-answer [answer]='ans'></app-post-answer>
   </div>
   <h2 class="subtitle">Your Answer</h2>
-  <form class="form">
+  <form class="form" [formGroup]="answer" (ngSubmit)="submitAnswer()">
     <div class="md-form">
-      <textarea type="text" id="form8" class="md-textarea md-textarea-auto form-control" mdbInput></textarea>
-      <label for="form8">Type your answer</label>
+      <textarea type="text" id="body" class="md-textarea md-textarea-auto form-control" formControlName="body" mdbInput></textarea>
+      <label for="body">Type your answer</label>
     </div>
-    <button mdbBtn type="button" class="button" mdbWavesEffect>
+    <button [disabled]='!answer.valid' mdbBtn type="submit" class="button" mdbWavesEffect>
       Post Your Answer
     </button>
   </form>

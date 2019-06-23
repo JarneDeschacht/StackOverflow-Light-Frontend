@@ -1,6 +1,6 @@
 <mdb-card class="card">
   <mdb-card-body>
-    <mdb-card-text>{{answer.body}}</mdb-card-text>
+    <mdb-card-text><pre>{{answer.body}}</pre></mdb-card-text>
   </mdb-card-body>
   <mdb-card-footer><small class="text-muted">Posted on {{answer.creationTime | date : 'medium'}} by <span
         class="post-owner">{{answer.user.firstName}} {{answer.user.lastName}}</span></small></mdb-card-footer>

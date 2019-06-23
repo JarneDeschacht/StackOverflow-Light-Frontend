@@ -61,10 +61,7 @@ export class Post {
   set score(newscore: number) {
     this._score = newscore;
   }
-  addAnswer(body: string, user: User) {
-    this._answers.push(new Answer(body, user));
-  }
-  addVote(type: number, user: User) {
-    this._votes.push(new Vote(user, type));
+  addAnswer(answer: Answer) {
+    this._answers.push(answer);
   }
 }

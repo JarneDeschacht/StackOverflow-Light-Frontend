@@ -75,4 +75,10 @@
 .md-form input[type=password]:focus:not([readonly])+label {
   color: $maincolor;
 }
-
+pre{
+  white-space: pre-wrap;
+  font-family: "Roboto", sans-serif;
+  color: #747373;
+  font-size: 0.9rem;
+  font-weight: 400;
+}

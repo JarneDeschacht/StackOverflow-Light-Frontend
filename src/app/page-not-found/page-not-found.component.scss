@@ -1,6 +1,12 @@
+@import '../../assets/colors.scss';
+
 .notfound{
     padding-top: 6%;
     width: 70%;
     margin: 0 auto;
     text-align: center;
+    a{
+        color: $maincolor;
+        font-weight: bold;
+    }
 }

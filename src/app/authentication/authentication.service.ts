@@ -74,7 +74,7 @@ export class AuthenticationService {
               this._user$.next(user.firstName);
               localStorage.setItem(
                 this._userKey,
-                JSON.stringify(User.fromJSON(user))
+                JSON.stringify(user)
               );
             });
             return true;
@@ -110,7 +110,7 @@ export class AuthenticationService {
               this._user$.next(user.firstName);
               localStorage.setItem(
                 this._userKey,
-                JSON.stringify(User.fromJSON(user))
+                JSON.stringify(user)
               );
             });
             return true;
