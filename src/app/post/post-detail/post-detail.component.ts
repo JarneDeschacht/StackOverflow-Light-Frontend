@@ -81,5 +81,6 @@ export class PostDetailComponent implements OnInit {
       .subscribe(answer => {
         this.post.addAnswer(answer);
       });
+    this.answer.reset();
   }
 }

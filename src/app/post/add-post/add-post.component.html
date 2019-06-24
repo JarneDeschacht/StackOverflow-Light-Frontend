@@ -1,3 +1,33 @@
 <div class="add-post">
-  TEST
+  <form [formGroup]="post" class="border border-light p-5" (ngSubmit)="onSubmit()">
+
+    <p class="h4 mb-4 text-center">Post a question</p>
+
+    <div class="form-row">
+      <div class="col">
+        <div class="md-form">
+          <input mdbInput mdbValidate type="text" id="title" class="form-control" formControlName="title">
+          <label for="title">Title</label>
+          <mdb-error *ngIf="title.invalid && (title.dirty || title.touched)">
+            {{getErrorMessage(post.get('title')['errors']) }}</mdb-error>
+          <mdb-success *ngIf="title.valid && (title.dirty || title.touched)">Input valid</mdb-success>
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col">
+        <div class="md-form">
+          <textarea mdbValidate mdbInput type="text" id="body" class="md-textarea md-textarea-auto form-control"
+            formControlName="body"></textarea>
+          <label for="body">Body</label>
+          <mdb-error *ngIf="body.invalid && (body.dirty || body.touched)">
+            {{getErrorMessage(post.get('body')['errors']) }}</mdb-error>
+          <mdb-success *ngIf="body.valid && (body.dirty || body.touched)">Input valid</mdb-success>
+        </div>
+      </div>
+    </div>
+
+
+    <button class="btn btn-info btn-block my-4 btn" type="submit" [disabled]='!post.valid'>Post Your Question</button>
+  </form>
 </div>

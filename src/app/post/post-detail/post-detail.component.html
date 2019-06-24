@@ -10,7 +10,7 @@
       <mdb-card-title>
         <h5>{{post.title}}</h5>
       </mdb-card-title>
-      <mdb-card-text>{{post.body}}</mdb-card-text>
+      <mdb-card-text><pre>{{post.body}}</pre></mdb-card-text>
       <mdb-card-text><small class="text-muted">Posted on {{post.creationTime | date : 'medium'}} by <span
             class="post-owner">{{post.owner.firstName}} {{post.owner.lastName}}</span></small></mdb-card-text>
     </mdb-card-body>

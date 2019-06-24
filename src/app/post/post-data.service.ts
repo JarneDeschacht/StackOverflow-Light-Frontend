@@ -42,9 +42,14 @@ export class PostDataService {
       .post(`${environment.apiUrl}/post/${postId}/deletevotes/${userid}`, {})
       .pipe(map((post: any): Post => Post.fromJSON(post)));
   }
-  addAnswer(userid: number, postId: number, body: string){
+  addAnswer(userid: number, postId: number, body: string) {
     return this.http
       .post(`${environment.apiUrl}/post/${postId}/answers`, { body, userid })
       .pipe(map((answer: any): Answer => Answer.fromJSON(answer)));
+  }
+  addPost(ownerId: number, title: string, body: string) {
+    return this.http
+      .post(`${environment.apiUrl}/post/`, { title, body, ownerId })
+      .pipe(map((post: any): Post => Post.fromJSON(post)));
   }
 }
