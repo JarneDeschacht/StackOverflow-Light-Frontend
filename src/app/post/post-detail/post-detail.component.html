@@ -1,8 +1,8 @@
 <div class="detail">
   <div class="voting">
-    <mdb-icon class="vote up" [ngClass]="{'active' : uservote > 0 }" (click)="upvote()" fas icon="arrow-up fa-3x"></mdb-icon>
-    <span class="score ">{{post.score}}</span>
-    <mdb-icon class="vote down" [ngClass]="{'active' : !(uservote >= 0) }" (click)="downvote()" fas icon="arrow-down fa-3x">
+    <mdb-icon class="vote up" [ngClass]="{'active' : uservote > 0 }" (click)="upvote()" fas icon="arrow-up fa-3x" data-cy="upvote"></mdb-icon>
+    <span class="score " data-cy="score">{{post.score}}</span>
+    <mdb-icon class="vote down" [ngClass]="{'active' : !(uservote >= 0) }" (click)="downvote()" fas icon="arrow-down fa-3x" data-cy="downvote">
       </mdb-icon>
   </div>
   <mdb-card class="card">
@@ -17,15 +17,15 @@
   </mdb-card>
   <h2 *ngIf="post.answers.length >0" class="subtitle">Answers : {{post.answers.length}}</h2>
   <div class="answers" *ngFor="let ans of post.answers">
-    <app-post-answer [answer]='ans'></app-post-answer>
+    <app-post-answer [answer]='ans' data-cy="answer"></app-post-answer>
   </div>
   <h2 class="subtitle">Your Answer</h2>
   <form class="form" [formGroup]="answer" (ngSubmit)="submitAnswer()">
     <div class="md-form">
-      <textarea type="text" id="body" class="md-textarea md-textarea-auto form-control" formControlName="body" mdbInput></textarea>
+      <textarea type="text" id="body" class="md-textarea md-textarea-auto form-control" formControlName="body" mdbInput data-cy="answerbody"></textarea>
       <label for="body">Type your answer</label>
     </div>
-    <button [disabled]='!answer.valid' mdbBtn type="submit" class="button" mdbWavesEffect>
+    <button [disabled]='!answer.valid' mdbBtn type="submit" class="button" mdbWavesEffect data-cy="confirm-answer">
       Post Your Answer
     </button>
   </form>

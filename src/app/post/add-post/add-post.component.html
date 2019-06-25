@@ -6,7 +6,7 @@
     <div class="form-row">
       <div class="col">
         <div class="md-form">
-          <input mdbInput mdbValidate type="text" id="title" class="form-control" formControlName="title">
+          <input mdbInput mdbValidate type="text" id="title" class="form-control" formControlName="title" data-cy="title">
           <label for="title">Title</label>
           <mdb-error *ngIf="title.invalid && (title.dirty || title.touched)">
             {{getErrorMessage(post.get('title')['errors']) }}</mdb-error>
@@ -18,7 +18,7 @@
       <div class="col">
         <div class="md-form">
           <textarea mdbValidate mdbInput type="text" id="body" class="md-textarea md-textarea-auto form-control"
-            formControlName="body"></textarea>
+            formControlName="body" data-cy="body"></textarea>
           <label for="body">Body</label>
           <mdb-error *ngIf="body.invalid && (body.dirty || body.touched)">
             {{getErrorMessage(post.get('body')['errors']) }}</mdb-error>
@@ -28,6 +28,6 @@
     </div>
 
 
-    <button class="btn btn-info btn-block my-4 btn" type="submit" [disabled]='!post.valid'>Post Your Question</button>
+    <button class="btn btn-info btn-block my-4 btn" type="submit" [disabled]='!post.valid' data-cy="submitpost">Post Your Question</button>
   </form>
 </div>
