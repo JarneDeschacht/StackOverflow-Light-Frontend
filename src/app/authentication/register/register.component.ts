@@ -60,7 +60,11 @@ export class RegisterComponent implements OnInit {
     this.register = this.fb.group({
       firstname: ['', [Validators.required, Validators.maxLength(80)]],
       lastname: ['', [Validators.required, Validators.maxLength(80)]],
-      email: ['', [Validators.required, Validators.email]],
+      email: [
+        '',
+        [Validators.required, Validators.email],
+        serverSideValidateEmail(this.authService.checkEmailAvailability)
+      ],
       passwordGroup: this.fb.group(
         {
           password: [
@@ -99,6 +103,8 @@ export class RegisterComponent implements OnInit {
     } else if (errors.minlength) {
       return `Minimum length is ${errors.minlength.requiredLength} 
         characters (now ${errors.minlength.actualLength})`;
+    } else if (errors.userAlreadyExists) {
+      return `User already exists`;
     } else if (errors.maxlength) {
       return `Maximum length is ${errors.maxlength.requiredLength} 
         characters (now ${errors.maxlength.actualLength})`;
@@ -106,8 +112,6 @@ export class RegisterComponent implements OnInit {
       return `This is not a valid email`;
     } else if (errors.passwordsDiffer) {
       return `Passwords are not the same`;
-    } else if (errors.userAlreadyExists) {
-      return `User already exists`;
     } else if (errors.InvalidPassword) {
       return 'Password must contain at least 1 number, 1 captial letter and 1 small letter';
     }
